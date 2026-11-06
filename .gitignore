@@ -1,0 +1,12 @@
+# Environment & caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.playwright-mcp/
+.DS_Store
+
+# Data (rebuilt by scripts/download_data.py + python -m fraudguard.prepare)
+data/processed/
+data/raw/
+data/analysis.db

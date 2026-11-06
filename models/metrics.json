@@ -1,0 +1,2935 @@
+{
+  "datasets": {
+    "paysim": {
+      "key": "paysim",
+      "title_ar": "تحويلات وسحب الأموال عبر الهاتف (PaySim)",
+      "crime_ar": "احتيال التحويل والسحب النقدي (الاستيلاء على الحسابات)",
+      "source": "https://www.kaggle.com/datasets/ealaxi/paysim1",
+      "citation": "Lopez-Rojas, E., Elmir, A., & Axelsson, S. (2016). PaySim: A financial mobile money simulator for fraud detection. EMSS 2016.",
+      "rows": 2770409,
+      "positives": 8213,
+      "prevalence": 0.00296,
+      "features_used": [
+        "amount",
+        "oldbalanceOrg",
+        "newbalanceOrig",
+        "oldbalanceDest",
+        "newbalanceDest",
+        "hour",
+        "amount_to_balance",
+        "orig_emptied",
+        "dest_zero_both",
+        "dest_prior_count",
+        "dest_prior_amount",
+        "dest_hours_since_prev",
+        "type"
+      ],
+      "features_excluded": [
+        "err_balance_orig",
+        "err_balance_dest"
+      ],
+      "split": {
+        "train": {
+          "rows": 1672907,
+          "positives": 3193,
+          "prevalence": 0.00191
+        },
+        "validation": {
+          "rows": 544998,
+          "positives": 762,
+          "prevalence": 0.0014
+        },
+        "test": {
+          "rows": 552504,
+          "positives": 4258,
+          "prevalence": 0.00771
+        }
+      },
+      "train_rows_used": 1003193,
+      "validation_runs": [
+        {
+          "name": "Logistic Regression",
+          "group": "algorithm",
+          "pr_auc": 0.7467,
+          "roc_auc": 0.9986,
+          "recall_at_1fpr": 0.9646,
+          "recall_at_01fpr": 0.7743,
+          "fit_seconds": 1.772
+        },
+        {
+          "name": "Decision Tree",
+          "group": "algorithm",
+          "pr_auc": 0.9986,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 5.2453
+        },
+        {
+          "name": "Random Forest",
+          "group": "algorithm",
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 12.2555
+        },
+        {
+          "name": "Neural Network (MLP)",
+          "group": "algorithm",
+          "pr_auc": 0.9199,
+          "roc_auc": 0.9995,
+          "recall_at_1fpr": 0.979,
+          "recall_at_01fpr": 0.9186,
+          "fit_seconds": 15.5987
+        },
+        {
+          "name": "XGBoost",
+          "group": "algorithm",
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 5.1682
+        },
+        {
+          "name": "LightGBM",
+          "group": "algorithm",
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 9.6513
+        },
+        {
+          "name": "LightGBM {\"num_leaves\": 15}",
+          "group": "tuning",
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 6.7177
+        },
+        {
+          "name": "LightGBM {\"num_leaves\": 31}",
+          "group": "tuning",
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 9.3166
+        },
+        {
+          "name": "LightGBM {\"num_leaves\": 63, \"min_child_samples\": 300}",
+          "group": "tuning",
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 12.415
+        },
+        {
+          "name": "XGBoost {\"max_depth\": 4}",
+          "group": "tuning",
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 4.6952
+        },
+        {
+          "name": "XGBoost {\"max_depth\": 6}",
+          "group": "tuning",
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 5.2576
+        },
+        {
+          "name": "XGBoost {\"max_depth\": 8, \"min_child_weight\": 10}",
+          "group": "tuning",
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 4.5424
+        },
+        {
+          "name": "LightGBM + class_weight",
+          "group": "imbalance",
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 7.2303
+        },
+        {
+          "name": "LightGBM + undersample_1:10",
+          "group": "imbalance",
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 4.3468
+        },
+        {
+          "name": "LightGBM + smote_1:10",
+          "group": "imbalance",
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 8.3803
+        },
+        {
+          "name": "LightGBM − behavioural features",
+          "group": "ablation",
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 7.0418
+        },
+        {
+          "name": "LightGBM − without_balance_fields",
+          "group": "ablation",
+          "pr_auc": 0.3787,
+          "roc_auc": 0.941,
+          "recall_at_1fpr": 0.6234,
+          "recall_at_01fpr": 0.3638,
+          "fit_seconds": 5.4172
+        },
+        {
+          "name": "LightGBM + simulator artefacts",
+          "group": "ablation",
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fit_seconds": 7.7501
+        }
+      ],
+      "best_configs": {
+        "LightGBM": {
+          "num_leaves": 15
+        },
+        "XGBoost": {
+          "max_depth": 4
+        }
+      },
+      "selected": "LightGBM (tuned)",
+      "imbalance": {
+        "none": 1.0,
+        "class_weight": 1.0,
+        "undersample_1:10": 1.0,
+        "smote_1:10": 1.0
+      },
+      "ablation": {
+        "main": 1.0,
+        "without_behavioural": 1.0,
+        "without_balance_fields": 0.3787,
+        "with_simulator_artifacts": 1.0
+      },
+      "test_comparison": {
+        "LightGBM": {
+          "pr_auc": 1.0,
+          "pr_auc_std": 0.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 0.9999,
+          "n_seeds": 3
+        },
+        "Random Forest": {
+          "pr_auc": 1.0,
+          "pr_auc_std": 0.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "n_seeds": 3
+        },
+        "XGBoost": {
+          "pr_auc": 1.0,
+          "pr_auc_std": 0.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "n_seeds": 3
+        },
+        "Decision Tree": {
+          "pr_auc": 0.9995,
+          "pr_auc_std": 0.0,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9998,
+          "recall_at_01fpr": 0.9998,
+          "n_seeds": 1
+        },
+        "Neural Network (MLP)": {
+          "pr_auc": 0.945,
+          "pr_auc_std": 0.0148,
+          "roc_auc": 0.997,
+          "recall_at_1fpr": 0.9627,
+          "recall_at_01fpr": 0.8925,
+          "n_seeds": 3
+        },
+        "Logistic Regression": {
+          "pr_auc": 0.9292,
+          "pr_auc_std": 0.0,
+          "roc_auc": 0.9951,
+          "recall_at_1fpr": 0.9601,
+          "recall_at_01fpr": 0.8565,
+          "n_seeds": 1
+        }
+      },
+      "test_runs": [
+        {
+          "algorithm": "Logistic Regression",
+          "seed": 42,
+          "pr_auc": 0.9292,
+          "roc_auc": 0.9951,
+          "recall_at_1fpr": 0.9601,
+          "recall_at_01fpr": 0.8565
+        },
+        {
+          "algorithm": "Decision Tree",
+          "seed": 42,
+          "pr_auc": 0.9995,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9998,
+          "recall_at_01fpr": 0.9998
+        },
+        {
+          "algorithm": "Random Forest",
+          "seed": 42,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0
+        },
+        {
+          "algorithm": "Random Forest",
+          "seed": 7,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0
+        },
+        {
+          "algorithm": "Random Forest",
+          "seed": 2026,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0
+        },
+        {
+          "algorithm": "Neural Network (MLP)",
+          "seed": 42,
+          "pr_auc": 0.9283,
+          "roc_auc": 0.9965,
+          "recall_at_1fpr": 0.9467,
+          "recall_at_01fpr": 0.869
+        },
+        {
+          "algorithm": "Neural Network (MLP)",
+          "seed": 7,
+          "pr_auc": 0.9503,
+          "roc_auc": 0.9972,
+          "recall_at_1fpr": 0.9662,
+          "recall_at_01fpr": 0.9014
+        },
+        {
+          "algorithm": "Neural Network (MLP)",
+          "seed": 2026,
+          "pr_auc": 0.9564,
+          "roc_auc": 0.9974,
+          "recall_at_1fpr": 0.9751,
+          "recall_at_01fpr": 0.9072
+        },
+        {
+          "algorithm": "XGBoost",
+          "seed": 42,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0
+        },
+        {
+          "algorithm": "XGBoost",
+          "seed": 7,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0
+        },
+        {
+          "algorithm": "XGBoost",
+          "seed": 2026,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0
+        },
+        {
+          "algorithm": "LightGBM",
+          "seed": 42,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 0.9998
+        },
+        {
+          "algorithm": "LightGBM",
+          "seed": 7,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0
+        },
+        {
+          "algorithm": "LightGBM",
+          "seed": 2026,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0
+        }
+      ],
+      "final_test": {
+        "pr_auc": 1.0,
+        "roc_auc": 1.0,
+        "recall_at_1fpr": 1.0,
+        "recall_at_01fpr": 0.9998,
+        "brier_calibrated": 0.0,
+        "pr_auc_95ci": [
+          0.9999,
+          1.0
+        ],
+        "n_bootstrap": 300,
+        "diff_pr_auc_95ci": [
+          -0.0001,
+          0.0
+        ],
+        "diff_p_value": 0.78
+      },
+      "runner_up": "Random Forest",
+      "thresholds": {
+        "review": 2.8200570899579565e-05,
+        "block": 0.00021232665523181592
+      },
+      "operating_points": {
+        "review_1fpr": {
+          "threshold": 0.0,
+          "tp": 4258,
+          "fp": 4311,
+          "fn": 0,
+          "tn": 543935,
+          "recall": 1.0,
+          "precision": 0.4969,
+          "fpr": 0.0079,
+          "alerts_per_10k": 155.0939
+        },
+        "block_01fpr": {
+          "threshold": 0.0002,
+          "tp": 4257,
+          "fp": 414,
+          "fn": 1,
+          "tn": 547832,
+          "recall": 0.9998,
+          "precision": 0.9114,
+          "fpr": 0.0008,
+          "alerts_per_10k": 84.5424
+        }
+      },
+      "periods": [
+        {
+          "period": 1,
+          "rows": 138126,
+          "positives": 238,
+          "prevalence": 0.0017,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fpr_at_review": 0.0086,
+          "recall_at_review": 1.0
+        },
+        {
+          "period": 2,
+          "rows": 138126,
+          "positives": 238,
+          "prevalence": 0.0017,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fpr_at_review": 0.008,
+          "recall_at_review": 1.0
+        },
+        {
+          "period": 3,
+          "rows": 138126,
+          "positives": 844,
+          "prevalence": 0.0061,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fpr_at_review": 0.0102,
+          "recall_at_review": 1.0
+        },
+        {
+          "period": 4,
+          "rows": 138126,
+          "positives": 2938,
+          "prevalence": 0.0213,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 1.0,
+          "fpr_at_review": 0.0046,
+          "recall_at_review": 1.0
+        }
+      ],
+      "drift_psi": [
+        {
+          "feature": "dest_hours_since_prev",
+          "label_ar": "ساعات منذ آخر استلام",
+          "psi": 1.2255
+        },
+        {
+          "feature": "hour",
+          "label_ar": "ساعة العملية",
+          "psi": 0.067
+        },
+        {
+          "feature": "newbalanceDest",
+          "label_ar": "رصيد المستلم بعد",
+          "psi": 0.0078
+        },
+        {
+          "feature": "dest_prior_amount",
+          "label_ar": "مجموع ما استلمه سابقاً",
+          "psi": 0.0069
+        },
+        {
+          "feature": "oldbalanceDest",
+          "label_ar": "رصيد المستلم قبل",
+          "psi": 0.0059
+        },
+        {
+          "feature": "amount",
+          "label_ar": "المبلغ",
+          "psi": 0.0023
+        },
+        {
+          "feature": "amount_to_balance",
+          "label_ar": "المبلغ ÷ رصيد المرسل",
+          "psi": 0.0023
+        },
+        {
+          "feature": "dest_prior_count",
+          "label_ar": "عمليات سابقة للمستلم",
+          "psi": 0.002
+        },
+        {
+          "feature": "oldbalanceOrg",
+          "label_ar": "رصيد المرسل قبل",
+          "psi": 0.0015
+        },
+        {
+          "feature": "newbalanceOrig",
+          "label_ar": "رصيد المرسل بعد",
+          "psi": 0.0
+        }
+      ],
+      "feature_importance": [
+        {
+          "feature": "amount_to_balance",
+          "label_ar": "المبلغ ÷ رصيد المرسل",
+          "mean_abs_shap": 1.17718
+        },
+        {
+          "feature": "newbalanceOrig",
+          "label_ar": "رصيد المرسل بعد",
+          "mean_abs_shap": 0.94855
+        },
+        {
+          "feature": "dest_hours_since_prev",
+          "label_ar": "ساعات منذ آخر استلام",
+          "mean_abs_shap": 0.53007
+        },
+        {
+          "feature": "amount",
+          "label_ar": "المبلغ",
+          "mean_abs_shap": 0.48671
+        },
+        {
+          "feature": "oldbalanceDest",
+          "label_ar": "رصيد المستلم قبل",
+          "mean_abs_shap": 0.412
+        },
+        {
+          "feature": "hour",
+          "label_ar": "ساعة العملية",
+          "mean_abs_shap": 0.40449
+        },
+        {
+          "feature": "newbalanceDest",
+          "label_ar": "رصيد المستلم بعد",
+          "mean_abs_shap": 0.31458
+        },
+        {
+          "feature": "dest_prior_amount",
+          "label_ar": "مجموع ما استلمه سابقاً",
+          "mean_abs_shap": 0.29925
+        },
+        {
+          "feature": "oldbalanceOrg",
+          "label_ar": "رصيد المرسل قبل",
+          "mean_abs_shap": 0.26248
+        },
+        {
+          "feature": "dest_prior_count",
+          "label_ar": "عمليات سابقة للمستلم",
+          "mean_abs_shap": 0.15268
+        },
+        {
+          "feature": "orig_emptied",
+          "label_ar": "تفريغ حساب المرسل",
+          "mean_abs_shap": 0.14304
+        },
+        {
+          "feature": "type_CASH_OUT",
+          "label_ar": "نوع العملية = CASH_OUT",
+          "mean_abs_shap": 0.13453
+        },
+        {
+          "feature": "type_TRANSFER",
+          "label_ar": "نوع العملية = TRANSFER",
+          "mean_abs_shap": 0.09604
+        },
+        {
+          "feature": "dest_zero_both",
+          "label_ar": "رصيد المستلم صفر قبل وبعد",
+          "mean_abs_shap": 0.00365
+        },
+        {
+          "feature": "missingindicator_dest_hours_since_prev",
+          "label_ar": "ساعات منذ آخر استلام",
+          "mean_abs_shap": 0.00184
+        }
+      ],
+      "latency": {
+        "single_ms_median": 1.22,
+        "throughput_per_second": 306486
+      },
+      "schema": [
+        {
+          "name": "amount",
+          "label_ar": "المبلغ",
+          "type": "number",
+          "default": 170632.9375,
+          "min": 0.0,
+          "max": 92445520.0
+        },
+        {
+          "name": "oldbalanceOrg",
+          "label_ar": "رصيد المرسل قبل",
+          "type": "number",
+          "default": 271.0,
+          "min": 0.0,
+          "max": 37670040.0
+        },
+        {
+          "name": "newbalanceOrig",
+          "label_ar": "رصيد المرسل بعد",
+          "type": "number",
+          "default": 0.0,
+          "min": 0.0,
+          "max": 27670038.0
+        },
+        {
+          "name": "oldbalanceDest",
+          "label_ar": "رصيد المستلم قبل",
+          "type": "number",
+          "default": 556845.125,
+          "min": 0.0,
+          "max": 150014656.0
+        },
+        {
+          "name": "newbalanceDest",
+          "label_ar": "رصيد المستلم بعد",
+          "type": "number",
+          "default": 829694.5,
+          "min": 0.0,
+          "max": 192624576.0
+        },
+        {
+          "name": "hour",
+          "label_ar": "ساعة العملية",
+          "type": "number",
+          "default": 15.0,
+          "min": 0.0,
+          "max": 23.0
+        },
+        {
+          "name": "amount_to_balance",
+          "label_ar": "المبلغ ÷ رصيد المرسل",
+          "type": "number",
+          "default": 619.4887084960938,
+          "min": 0.0,
+          "max": 92445520.0
+        },
+        {
+          "name": "orig_emptied",
+          "label_ar": "تفريغ حساب المرسل",
+          "type": "binary",
+          "default": 0.0,
+          "min": 0.0,
+          "max": 1.0
+        },
+        {
+          "name": "dest_zero_both",
+          "label_ar": "رصيد المستلم صفر قبل وبعد",
+          "type": "binary",
+          "default": 0.0,
+          "min": 0.0,
+          "max": 1.0
+        },
+        {
+          "name": "dest_prior_count",
+          "label_ar": "عمليات سابقة للمستلم",
+          "type": "number",
+          "default": 3.0,
+          "min": 0.0,
+          "max": 68.0
+        },
+        {
+          "name": "dest_prior_amount",
+          "label_ar": "مجموع ما استلمه سابقاً",
+          "type": "number",
+          "default": 687848.75,
+          "min": 0.0,
+          "max": 146470496.0
+        },
+        {
+          "name": "dest_hours_since_prev",
+          "label_ar": "ساعات منذ آخر استلام",
+          "type": "number",
+          "default": 8.0,
+          "min": 0.0,
+          "max": 265.0
+        },
+        {
+          "name": "type",
+          "label_ar": "نوع العملية",
+          "type": "category",
+          "options": [
+            "CASH_OUT",
+            "TRANSFER"
+          ],
+          "default": "CASH_OUT"
+        }
+      ],
+      "samples": [
+        {
+          "label": "احتيال مؤكد — خطورة عالية",
+          "actual": 1,
+          "features": {
+            "amount": 960196.1875,
+            "oldbalanceOrg": 960196.1875,
+            "newbalanceOrig": 0.0,
+            "oldbalanceDest": 932.3900146484375,
+            "newbalanceDest": 961128.5625,
+            "hour": 4.0,
+            "amount_to_balance": 0.9999989867210388,
+            "orig_emptied": 1.0,
+            "dest_zero_both": 0.0,
+            "dest_prior_count": 0.0,
+            "dest_prior_amount": 0.0,
+            "dest_hours_since_prev": null,
+            "type": "CASH_OUT"
+          }
+        },
+        {
+          "label": "احتيال مؤكد — حالة حدّية",
+          "actual": 1,
+          "features": {
+            "amount": 399045.09375,
+            "oldbalanceOrg": 10399045.0,
+            "newbalanceOrig": 10399045.0,
+            "oldbalanceDest": 0.0,
+            "newbalanceDest": 0.0,
+            "hour": 22.0,
+            "amount_to_balance": 0.03837323933839798,
+            "orig_emptied": 0.0,
+            "dest_zero_both": 1.0,
+            "dest_prior_count": 0.0,
+            "dest_prior_amount": 0.0,
+            "dest_hours_since_prev": null,
+            "type": "TRANSFER"
+          }
+        },
+        {
+          "label": "عملية سليمة — خطورة منخفضة",
+          "actual": 0,
+          "features": {
+            "amount": 250113.4375,
+            "oldbalanceOrg": 50300.0,
+            "newbalanceOrig": 0.0,
+            "oldbalanceDest": 313460.0,
+            "newbalanceDest": 473282.875,
+            "hour": 11.0,
+            "amount_to_balance": 4.972335338592529,
+            "orig_emptied": 1.0,
+            "dest_zero_both": 0.0,
+            "dest_prior_count": 0.0,
+            "dest_prior_amount": 0.0,
+            "dest_hours_since_prev": null,
+            "type": "TRANSFER"
+          }
+        },
+        {
+          "label": "عملية سليمة — إنذار كاذب",
+          "actual": 0,
+          "features": {
+            "amount": 116484.4375,
+            "oldbalanceOrg": 0.0,
+            "newbalanceOrig": 0.0,
+            "oldbalanceDest": 267373.65625,
+            "newbalanceDest": 383858.09375,
+            "hour": 19.0,
+            "amount_to_balance": 116484.4375,
+            "orig_emptied": 0.0,
+            "dest_zero_both": 0.0,
+            "dest_prior_count": 1.0,
+            "dest_prior_amount": 16913.2890625,
+            "dest_hours_since_prev": 2.0,
+            "type": "CASH_OUT"
+          }
+        }
+      ],
+      "runtime_seconds": 295.5
+    },
+    "ulb": {
+      "key": "ulb",
+      "title_ar": "معاملات بطاقات الائتمان (ULB)",
+      "crime_ar": "احتيال بطاقات الائتمان",
+      "source": "https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud",
+      "citation": "Dal Pozzolo, A., Caelen, O., Johnson, R. A., & Bontempi, G. (2015). Calibrating probability with undersampling for unbalanced classification. IEEE SSCI.",
+      "rows": 284807,
+      "positives": 492,
+      "prevalence": 0.00173,
+      "features_used": [
+        "V1",
+        "V2",
+        "V3",
+        "V4",
+        "V5",
+        "V6",
+        "V7",
+        "V8",
+        "V9",
+        "V10",
+        "V11",
+        "V12",
+        "V13",
+        "V14",
+        "V15",
+        "V16",
+        "V17",
+        "V18",
+        "V19",
+        "V20",
+        "V21",
+        "V22",
+        "V23",
+        "V24",
+        "V25",
+        "V26",
+        "V27",
+        "V28",
+        "Amount",
+        "log_amount",
+        "hour"
+      ],
+      "features_excluded": [],
+      "split": {
+        "train": {
+          "rows": 170888,
+          "positives": 360,
+          "prevalence": 0.00211
+        },
+        "validation": {
+          "rows": 56957,
+          "positives": 57,
+          "prevalence": 0.001
+        },
+        "test": {
+          "rows": 56962,
+          "positives": 75,
+          "prevalence": 0.00132
+        }
+      },
+      "train_rows_used": 170888,
+      "validation_runs": [
+        {
+          "name": "Logistic Regression",
+          "group": "algorithm",
+          "pr_auc": 0.7773,
+          "roc_auc": 0.9732,
+          "recall_at_1fpr": 0.8596,
+          "recall_at_01fpr": 0.7895,
+          "fit_seconds": 0.5237
+        },
+        {
+          "name": "Decision Tree",
+          "group": "algorithm",
+          "pr_auc": 0.6961,
+          "roc_auc": 0.893,
+          "recall_at_1fpr": 0.7895,
+          "recall_at_01fpr": 0.7142,
+          "fit_seconds": 2.9569
+        },
+        {
+          "name": "Random Forest",
+          "group": "algorithm",
+          "pr_auc": 0.761,
+          "roc_auc": 0.9602,
+          "recall_at_1fpr": 0.8421,
+          "recall_at_01fpr": 0.807,
+          "fit_seconds": 4.0432
+        },
+        {
+          "name": "Neural Network (MLP)",
+          "group": "algorithm",
+          "pr_auc": 0.7604,
+          "roc_auc": 0.9495,
+          "recall_at_1fpr": 0.8246,
+          "recall_at_01fpr": 0.7544,
+          "fit_seconds": 2.7436
+        },
+        {
+          "name": "XGBoost",
+          "group": "algorithm",
+          "pr_auc": 0.7862,
+          "roc_auc": 0.9823,
+          "recall_at_1fpr": 0.807,
+          "recall_at_01fpr": 0.7895,
+          "fit_seconds": 2.3165
+        },
+        {
+          "name": "LightGBM",
+          "group": "algorithm",
+          "pr_auc": 0.7778,
+          "roc_auc": 0.981,
+          "recall_at_1fpr": 0.8246,
+          "recall_at_01fpr": 0.7895,
+          "fit_seconds": 5.3274
+        },
+        {
+          "name": "LightGBM {\"num_leaves\": 15}",
+          "group": "tuning",
+          "pr_auc": 0.7789,
+          "roc_auc": 0.9822,
+          "recall_at_1fpr": 0.8596,
+          "recall_at_01fpr": 0.7895,
+          "fit_seconds": 3.2739
+        },
+        {
+          "name": "LightGBM {\"num_leaves\": 31}",
+          "group": "tuning",
+          "pr_auc": 0.7778,
+          "roc_auc": 0.981,
+          "recall_at_1fpr": 0.8246,
+          "recall_at_01fpr": 0.7895,
+          "fit_seconds": 5.1794
+        },
+        {
+          "name": "LightGBM {\"num_leaves\": 63, \"min_child_samples\": 300}",
+          "group": "tuning",
+          "pr_auc": 0.7794,
+          "roc_auc": 0.9828,
+          "recall_at_1fpr": 0.8246,
+          "recall_at_01fpr": 0.7895,
+          "fit_seconds": 6.462
+        },
+        {
+          "name": "XGBoost {\"max_depth\": 4}",
+          "group": "tuning",
+          "pr_auc": 0.7854,
+          "roc_auc": 0.9831,
+          "recall_at_1fpr": 0.8246,
+          "recall_at_01fpr": 0.7895,
+          "fit_seconds": 2.0662
+        },
+        {
+          "name": "XGBoost {\"max_depth\": 6}",
+          "group": "tuning",
+          "pr_auc": 0.7862,
+          "roc_auc": 0.9823,
+          "recall_at_1fpr": 0.807,
+          "recall_at_01fpr": 0.7895,
+          "fit_seconds": 2.3219
+        },
+        {
+          "name": "XGBoost {\"max_depth\": 8, \"min_child_weight\": 10}",
+          "group": "tuning",
+          "pr_auc": 0.7875,
+          "roc_auc": 0.9811,
+          "recall_at_1fpr": 0.8421,
+          "recall_at_01fpr": 0.807,
+          "fit_seconds": 1.9155
+        },
+        {
+          "name": "XGBoost + class_weight",
+          "group": "imbalance",
+          "pr_auc": 0.7906,
+          "roc_auc": 0.9862,
+          "recall_at_1fpr": 0.8421,
+          "recall_at_01fpr": 0.7895,
+          "fit_seconds": 2.3665
+        },
+        {
+          "name": "XGBoost + undersample_1:10",
+          "group": "imbalance",
+          "pr_auc": 0.7612,
+          "roc_auc": 0.9721,
+          "recall_at_1fpr": 0.8421,
+          "recall_at_01fpr": 0.7719,
+          "fit_seconds": 1.0048
+        },
+        {
+          "name": "XGBoost + smote_1:10",
+          "group": "imbalance",
+          "pr_auc": 0.7825,
+          "roc_auc": 0.9831,
+          "recall_at_1fpr": 0.8246,
+          "recall_at_01fpr": 0.7895,
+          "fit_seconds": 2.83
+        },
+        {
+          "name": "XGBoost − without_amount_time",
+          "group": "ablation",
+          "pr_auc": 0.7808,
+          "roc_auc": 0.977,
+          "recall_at_1fpr": 0.8421,
+          "recall_at_01fpr": 0.7719,
+          "fit_seconds": 1.8129
+        }
+      ],
+      "best_configs": {
+        "LightGBM": {
+          "num_leaves": 63,
+          "min_child_samples": 300
+        },
+        "XGBoost": {
+          "max_depth": 8,
+          "min_child_weight": 10
+        }
+      },
+      "selected": "XGBoost (tuned, class_weight)",
+      "imbalance": {
+        "none": 0.7875,
+        "class_weight": 0.7906,
+        "undersample_1:10": 0.7612,
+        "smote_1:10": 0.7825
+      },
+      "ablation": {
+        "main": 0.7875,
+        "without_amount_time": 0.7808
+      },
+      "test_comparison": {
+        "Neural Network (MLP)": {
+          "pr_auc": 0.8247,
+          "pr_auc_std": 0.011,
+          "roc_auc": 0.9743,
+          "recall_at_1fpr": 0.8711,
+          "recall_at_01fpr": 0.8311,
+          "n_seeds": 3
+        },
+        "Random Forest": {
+          "pr_auc": 0.8024,
+          "pr_auc_std": 0.0009,
+          "roc_auc": 0.9814,
+          "recall_at_1fpr": 0.8711,
+          "recall_at_01fpr": 0.8089,
+          "n_seeds": 3
+        },
+        "LightGBM": {
+          "pr_auc": 0.8014,
+          "pr_auc_std": 0.0027,
+          "roc_auc": 0.9824,
+          "recall_at_1fpr": 0.8622,
+          "recall_at_01fpr": 0.8089,
+          "n_seeds": 3
+        },
+        "XGBoost": {
+          "pr_auc": 0.7889,
+          "pr_auc_std": 0.0023,
+          "roc_auc": 0.9804,
+          "recall_at_1fpr": 0.84,
+          "recall_at_01fpr": 0.7867,
+          "n_seeds": 3
+        },
+        "Logistic Regression": {
+          "pr_auc": 0.7786,
+          "pr_auc_std": 0.0,
+          "roc_auc": 0.9837,
+          "recall_at_1fpr": 0.8667,
+          "recall_at_01fpr": 0.7867,
+          "n_seeds": 1
+        },
+        "Decision Tree": {
+          "pr_auc": 0.654,
+          "pr_auc_std": 0.0,
+          "roc_auc": 0.8779,
+          "recall_at_1fpr": 0.76,
+          "recall_at_01fpr": 0.7028,
+          "n_seeds": 1
+        }
+      },
+      "test_runs": [
+        {
+          "algorithm": "Logistic Regression",
+          "seed": 42,
+          "pr_auc": 0.7786,
+          "roc_auc": 0.9837,
+          "recall_at_1fpr": 0.8667,
+          "recall_at_01fpr": 0.7867
+        },
+        {
+          "algorithm": "Decision Tree",
+          "seed": 42,
+          "pr_auc": 0.654,
+          "roc_auc": 0.8779,
+          "recall_at_1fpr": 0.76,
+          "recall_at_01fpr": 0.7028
+        },
+        {
+          "algorithm": "Random Forest",
+          "seed": 42,
+          "pr_auc": 0.8024,
+          "roc_auc": 0.9785,
+          "recall_at_1fpr": 0.8667,
+          "recall_at_01fpr": 0.8
+        },
+        {
+          "algorithm": "Random Forest",
+          "seed": 7,
+          "pr_auc": 0.8015,
+          "roc_auc": 0.9823,
+          "recall_at_1fpr": 0.88,
+          "recall_at_01fpr": 0.8
+        },
+        {
+          "algorithm": "Random Forest",
+          "seed": 2026,
+          "pr_auc": 0.8033,
+          "roc_auc": 0.9834,
+          "recall_at_1fpr": 0.8667,
+          "recall_at_01fpr": 0.8267
+        },
+        {
+          "algorithm": "Neural Network (MLP)",
+          "seed": 42,
+          "pr_auc": 0.8357,
+          "roc_auc": 0.9744,
+          "recall_at_1fpr": 0.8667,
+          "recall_at_01fpr": 0.8533
+        },
+        {
+          "algorithm": "Neural Network (MLP)",
+          "seed": 7,
+          "pr_auc": 0.8137,
+          "roc_auc": 0.9722,
+          "recall_at_1fpr": 0.8667,
+          "recall_at_01fpr": 0.8133
+        },
+        {
+          "algorithm": "Neural Network (MLP)",
+          "seed": 2026,
+          "pr_auc": 0.8246,
+          "roc_auc": 0.9763,
+          "recall_at_1fpr": 0.88,
+          "recall_at_01fpr": 0.8267
+        },
+        {
+          "algorithm": "XGBoost",
+          "seed": 42,
+          "pr_auc": 0.7915,
+          "roc_auc": 0.9785,
+          "recall_at_1fpr": 0.84,
+          "recall_at_01fpr": 0.7867
+        },
+        {
+          "algorithm": "XGBoost",
+          "seed": 7,
+          "pr_auc": 0.7881,
+          "roc_auc": 0.9822,
+          "recall_at_1fpr": 0.84,
+          "recall_at_01fpr": 0.7867
+        },
+        {
+          "algorithm": "XGBoost",
+          "seed": 2026,
+          "pr_auc": 0.7872,
+          "roc_auc": 0.9805,
+          "recall_at_1fpr": 0.84,
+          "recall_at_01fpr": 0.7867
+        },
+        {
+          "algorithm": "LightGBM",
+          "seed": 42,
+          "pr_auc": 0.7996,
+          "roc_auc": 0.9812,
+          "recall_at_1fpr": 0.88,
+          "recall_at_01fpr": 0.8133
+        },
+        {
+          "algorithm": "LightGBM",
+          "seed": 7,
+          "pr_auc": 0.8002,
+          "roc_auc": 0.985,
+          "recall_at_1fpr": 0.84,
+          "recall_at_01fpr": 0.8
+        },
+        {
+          "algorithm": "LightGBM",
+          "seed": 2026,
+          "pr_auc": 0.8045,
+          "roc_auc": 0.9809,
+          "recall_at_1fpr": 0.8667,
+          "recall_at_01fpr": 0.8133
+        }
+      ],
+      "final_test": {
+        "pr_auc": 0.8064,
+        "roc_auc": 0.9828,
+        "recall_at_1fpr": 0.88,
+        "recall_at_01fpr": 0.8,
+        "brier_calibrated": 0.0004,
+        "pr_auc_95ci": [
+          0.715,
+          0.8838
+        ],
+        "n_bootstrap": 300,
+        "diff_pr_auc_95ci": [
+          -0.0597,
+          -0.0029
+        ],
+        "diff_p_value": 0.0267
+      },
+      "runner_up": "Neural Network (MLP)",
+      "thresholds": {
+        "review": 0.0028312893118709326,
+        "block": 0.062406692653894424
+      },
+      "operating_points": {
+        "review_1fpr": {
+          "threshold": 0.0028,
+          "tp": 66,
+          "fp": 633,
+          "fn": 9,
+          "tn": 56254,
+          "recall": 0.88,
+          "precision": 0.0944,
+          "fpr": 0.0111,
+          "alerts_per_10k": 122.7134
+        },
+        "block_01fpr": {
+          "threshold": 0.0624,
+          "tp": 60,
+          "fp": 56,
+          "fn": 15,
+          "tn": 56831,
+          "recall": 0.8,
+          "precision": 0.5172,
+          "fpr": 0.001,
+          "alerts_per_10k": 20.3645
+        }
+      },
+      "periods": [
+        {
+          "period": 1,
+          "rows": 14241,
+          "positives": 23,
+          "prevalence": 0.0016,
+          "pr_auc": 0.908,
+          "roc_auc": 0.9997,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 0.913,
+          "fpr_at_review": 0.0103,
+          "recall_at_review": 1.0
+        },
+        {
+          "period": 2,
+          "rows": 14241,
+          "positives": 30,
+          "prevalence": 0.0021,
+          "pr_auc": 0.7933,
+          "roc_auc": 0.9802,
+          "recall_at_1fpr": 0.8333,
+          "recall_at_01fpr": 0.7667,
+          "fpr_at_review": 0.0119,
+          "recall_at_review": 0.8333
+        },
+        {
+          "period": 3,
+          "rows": 14240,
+          "positives": 11,
+          "prevalence": 0.0008,
+          "pr_auc": 0.8919,
+          "roc_auc": 0.9691,
+          "recall_at_1fpr": 0.9091,
+          "recall_at_01fpr": 0.9091,
+          "fpr_at_review": 0.0112,
+          "recall_at_review": 0.9091
+        },
+        {
+          "period": 4,
+          "rows": 14240,
+          "positives": 11,
+          "prevalence": 0.0008,
+          "pr_auc": 0.5472,
+          "roc_auc": 0.9654,
+          "recall_at_1fpr": 0.7273,
+          "recall_at_01fpr": 0.5455,
+          "fpr_at_review": 0.0112,
+          "recall_at_review": 0.7273
+        }
+      ],
+      "drift_psi": [
+        {
+          "feature": "hour",
+          "label_ar": "ساعة المعاملة",
+          "psi": 4.433
+        },
+        {
+          "feature": "V1",
+          "label_ar": "مكوّن مخفي V1 (PCA)",
+          "psi": 1.4633
+        },
+        {
+          "feature": "V3",
+          "label_ar": "مكوّن مخفي V3 (PCA)",
+          "psi": 1.0616
+        },
+        {
+          "feature": "V28",
+          "label_ar": "مكوّن مخفي V28 (PCA)",
+          "psi": 0.7162
+        },
+        {
+          "feature": "V11",
+          "label_ar": "مكوّن مخفي V11 (PCA)",
+          "psi": 0.4424
+        },
+        {
+          "feature": "V25",
+          "label_ar": "مكوّن مخفي V25 (PCA)",
+          "psi": 0.363
+        },
+        {
+          "feature": "V12",
+          "label_ar": "مكوّن مخفي V12 (PCA)",
+          "psi": 0.2982
+        },
+        {
+          "feature": "V15",
+          "label_ar": "مكوّن مخفي V15 (PCA)",
+          "psi": 0.2785
+        },
+        {
+          "feature": "V22",
+          "label_ar": "مكوّن مخفي V22 (PCA)",
+          "psi": 0.2281
+        },
+        {
+          "feature": "V5",
+          "label_ar": "مكوّن مخفي V5 (PCA)",
+          "psi": 0.2144
+        }
+      ],
+      "feature_importance": [
+        {
+          "feature": "V4",
+          "label_ar": "مكوّن مخفي V4 (PCA)",
+          "mean_abs_shap": 2.37951
+        },
+        {
+          "feature": "V14",
+          "label_ar": "مكوّن مخفي V14 (PCA)",
+          "mean_abs_shap": 2.13359
+        },
+        {
+          "feature": "V12",
+          "label_ar": "مكوّن مخفي V12 (PCA)",
+          "mean_abs_shap": 1.34845
+        },
+        {
+          "feature": "V10",
+          "label_ar": "مكوّن مخفي V10 (PCA)",
+          "mean_abs_shap": 1.01782
+        },
+        {
+          "feature": "V11",
+          "label_ar": "مكوّن مخفي V11 (PCA)",
+          "mean_abs_shap": 0.70378
+        },
+        {
+          "feature": "V8",
+          "label_ar": "مكوّن مخفي V8 (PCA)",
+          "mean_abs_shap": 0.55879
+        },
+        {
+          "feature": "Amount",
+          "label_ar": "المبلغ",
+          "mean_abs_shap": 0.51722
+        },
+        {
+          "feature": "V7",
+          "label_ar": "مكوّن مخفي V7 (PCA)",
+          "mean_abs_shap": 0.46832
+        },
+        {
+          "feature": "V1",
+          "label_ar": "مكوّن مخفي V1 (PCA)",
+          "mean_abs_shap": 0.41227
+        },
+        {
+          "feature": "V25",
+          "label_ar": "مكوّن مخفي V25 (PCA)",
+          "mean_abs_shap": 0.39483
+        },
+        {
+          "feature": "V26",
+          "label_ar": "مكوّن مخفي V26 (PCA)",
+          "mean_abs_shap": 0.35505
+        },
+        {
+          "feature": "V19",
+          "label_ar": "مكوّن مخفي V19 (PCA)",
+          "mean_abs_shap": 0.35407
+        },
+        {
+          "feature": "V16",
+          "label_ar": "مكوّن مخفي V16 (PCA)",
+          "mean_abs_shap": 0.34345
+        },
+        {
+          "feature": "V3",
+          "label_ar": "مكوّن مخفي V3 (PCA)",
+          "mean_abs_shap": 0.33405
+        },
+        {
+          "feature": "V20",
+          "label_ar": "مكوّن مخفي V20 (PCA)",
+          "mean_abs_shap": 0.32139
+        },
+        {
+          "feature": "V21",
+          "label_ar": "مكوّن مخفي V21 (PCA)",
+          "mean_abs_shap": 0.31207
+        },
+        {
+          "feature": "V24",
+          "label_ar": "مكوّن مخفي V24 (PCA)",
+          "mean_abs_shap": 0.31052
+        },
+        {
+          "feature": "hour",
+          "label_ar": "ساعة المعاملة",
+          "mean_abs_shap": 0.29996
+        },
+        {
+          "feature": "V5",
+          "label_ar": "مكوّن مخفي V5 (PCA)",
+          "mean_abs_shap": 0.2901
+        },
+        {
+          "feature": "V22",
+          "label_ar": "مكوّن مخفي V22 (PCA)",
+          "mean_abs_shap": 0.2836
+        }
+      ],
+      "latency": {
+        "single_ms_median": 0.81,
+        "throughput_per_second": 1556516
+      },
+      "schema": [
+        {
+          "name": "V1",
+          "label_ar": "مكوّن مخفي V1 (PCA)",
+          "type": "number",
+          "default": -0.1835957169532776,
+          "min": -56.407508850097656,
+          "max": 2.4392075538635254
+        },
+        {
+          "name": "V2",
+          "label_ar": "مكوّن مخفي V2 (PCA)",
+          "type": "number",
+          "default": 0.10968716442584991,
+          "min": -72.71572875976562,
+          "max": 22.057729721069336
+        },
+        {
+          "name": "V3",
+          "label_ar": "مكوّن مخفي V3 (PCA)",
+          "type": "number",
+          "default": 0.6233524680137634,
+          "min": -33.68098449707031,
+          "max": 9.382558822631836
+        },
+        {
+          "name": "V4",
+          "label_ar": "مكوّن مخفي V4 (PCA)",
+          "type": "number",
+          "default": 0.12429597228765488,
+          "min": -5.519697189331055,
+          "max": 16.875343322753906
+        },
+        {
+          "name": "V5",
+          "label_ar": "مكوّن مخفي V5 (PCA)",
+          "type": "number",
+          "default": -0.22622624039649963,
+          "min": -42.14789962768555,
+          "max": 34.801666259765625
+        },
+        {
+          "name": "V6",
+          "label_ar": "مكوّن مخفي V6 (PCA)",
+          "type": "number",
+          "default": -0.20262277126312256,
+          "min": -26.160505294799805,
+          "max": 22.529298782348633
+        },
+        {
+          "name": "V7",
+          "label_ar": "مكوّن مخفي V7 (PCA)",
+          "type": "number",
+          "default": -0.03193040192127228,
+          "min": -43.55724334716797,
+          "max": 36.677268981933594
+        },
+        {
+          "name": "V8",
+          "label_ar": "مكوّن مخفي V8 (PCA)",
+          "type": "number",
+          "default": 0.056658487766981125,
+          "min": -73.21672058105469,
+          "max": 20.0072078704834
+        },
+        {
+          "name": "V9",
+          "label_ar": "مكوّن مخفي V9 (PCA)",
+          "type": "number",
+          "default": -0.07896509766578674,
+          "min": -13.434066772460938,
+          "max": 15.59499454498291
+        },
+        {
+          "name": "V10",
+          "label_ar": "مكوّن مخفي V10 (PCA)",
+          "type": "number",
+          "default": -0.1114228367805481,
+          "min": -24.5882625579834,
+          "max": 23.745136260986328
+        },
+        {
+          "name": "V11",
+          "label_ar": "مكوّن مخفي V11 (PCA)",
+          "type": "number",
+          "default": 0.11996584385633469,
+          "min": -4.0498948097229,
+          "max": 12.018913269042969
+        },
+        {
+          "name": "V12",
+          "label_ar": "مكوّن مخفي V12 (PCA)",
+          "type": "number",
+          "default": 0.11090677976608276,
+          "min": -18.683713912963867,
+          "max": 7.848392009735107
+        },
+        {
+          "name": "V13",
+          "label_ar": "مكوّن مخفي V13 (PCA)",
+          "type": "number",
+          "default": 0.03190727159380913,
+          "min": -5.791881084442139,
+          "max": 4.569008827209473
+        },
+        {
+          "name": "V14",
+          "label_ar": "مكوّن مخفي V14 (PCA)",
+          "type": "number",
+          "default": 0.093018539249897,
+          "min": -19.214324951171875,
+          "max": 10.526765823364258
+        },
+        {
+          "name": "V15",
+          "label_ar": "مكوّن مخفي V15 (PCA)",
+          "type": "number",
+          "default": 0.24415165185928345,
+          "min": -4.4989447593688965,
+          "max": 5.7845139503479
+        },
+        {
+          "name": "V16",
+          "label_ar": "مكوّن مخفي V16 (PCA)",
+          "type": "number",
+          "default": 0.06382475048303604,
+          "min": -14.129854202270508,
+          "max": 6.09852933883667
+        },
+        {
+          "name": "V17",
+          "label_ar": "مكوّن مخفي V17 (PCA)",
+          "type": "number",
+          "default": -0.018109016120433807,
+          "min": -25.162799835205078,
+          "max": 9.25352668762207
+        },
+        {
+          "name": "V18",
+          "label_ar": "مكوّن مخفي V18 (PCA)",
+          "type": "number",
+          "default": -0.05232677608728409,
+          "min": -9.498745918273926,
+          "max": 5.041069030761719
+        },
+        {
+          "name": "V19",
+          "label_ar": "مكوّن مخفي V19 (PCA)",
+          "type": "number",
+          "default": -0.022284455597400665,
+          "min": -7.213527202606201,
+          "max": 5.228341579437256
+        },
+        {
+          "name": "V20",
+          "label_ar": "مكوّن مخفي V20 (PCA)",
+          "type": "number",
+          "default": -0.03616835176944733,
+          "min": -22.83854866027832,
+          "max": 39.42090606689453
+        },
+        {
+          "name": "V21",
+          "label_ar": "مكوّن مخفي V21 (PCA)",
+          "type": "number",
+          "default": -0.0544629767537117,
+          "min": -34.83038330078125,
+          "max": 27.202838897705078
+        },
+        {
+          "name": "V22",
+          "label_ar": "مكوّن مخفي V22 (PCA)",
+          "type": "number",
+          "default": -0.06679162383079529,
+          "min": -10.933143615722656,
+          "max": 10.503089904785156
+        },
+        {
+          "name": "V23",
+          "label_ar": "مكوّن مخفي V23 (PCA)",
+          "type": "number",
+          "default": -0.036214761435985565,
+          "min": -44.807735443115234,
+          "max": 19.002941131591797
+        },
+        {
+          "name": "V24",
+          "label_ar": "مكوّن مخفي V24 (PCA)",
+          "type": "number",
+          "default": 0.059467118233442307,
+          "min": -2.8366270065307617,
+          "max": 4.0228657722473145
+        },
+        {
+          "name": "V25",
+          "label_ar": "مكوّن مخفي V25 (PCA)",
+          "type": "number",
+          "default": 0.13565440475940704,
+          "min": -10.29539680480957,
+          "max": 7.519588470458984
+        },
+        {
+          "name": "V26",
+          "label_ar": "مكوّن مخفي V26 (PCA)",
+          "type": "number",
+          "default": -0.05896472558379173,
+          "min": -2.60455060005188,
+          "max": 3.517345666885376
+        },
+        {
+          "name": "V27",
+          "label_ar": "مكوّن مخفي V27 (PCA)",
+          "type": "number",
+          "default": 0.008692655712366104,
+          "min": -22.5656795501709,
+          "max": 12.152400970458984
+        },
+        {
+          "name": "V28",
+          "label_ar": "مكوّن مخفي V28 (PCA)",
+          "type": "number",
+          "default": 0.021151289343833923,
+          "min": -11.710895538330078,
+          "max": 33.847808837890625
+        },
+        {
+          "name": "Amount",
+          "label_ar": "المبلغ",
+          "type": "number",
+          "default": 21.899999618530273,
+          "min": 0.0,
+          "max": 19656.529296875
+        },
+        {
+          "name": "log_amount",
+          "label_ar": "لوغاريتم المبلغ",
+          "type": "number",
+          "default": 3.131136894226074,
+          "min": 0.0,
+          "max": 9.886216163635254
+        },
+        {
+          "name": "hour",
+          "label_ar": "ساعة المعاملة",
+          "type": "number",
+          "default": 13.0,
+          "min": 0.0,
+          "max": 23.0
+        }
+      ],
+      "samples": [
+        {
+          "label": "احتيال مؤكد — خطورة عالية",
+          "actual": 1,
+          "features": {
+            "V1": -0.848290205001831,
+            "V2": 2.719882011413574,
+            "V3": -6.199069976806641,
+            "V4": 3.0444371700286865,
+            "V5": -3.3019094467163086,
+            "V6": -1.9921168088912964,
+            "V7": -3.7349016666412354,
+            "V8": 1.5200790166854858,
+            "V9": -2.548788070678711,
+            "V10": -4.533515453338623,
+            "V11": 2.2880218029022217,
+            "V12": -5.267204761505127,
+            "V13": 0.39479994773864746,
+            "V14": -4.2879958152771,
+            "V15": 1.315279483795166,
+            "V16": -6.469186782836914,
+            "V17": -8.713919639587402,
+            "V18": -3.7050697803497314,
+            "V19": 3.531002998352051,
+            "V20": 0.3195762634277344,
+            "V21": 1.1252292394638062,
+            "V22": 0.8052578568458557,
+            "V23": 0.1991191804409027,
+            "V24": 0.035206202417612076,
+            "V25": 0.012158762663602829,
+            "V26": 0.6016578078269958,
+            "V27": 0.13746768236160278,
+            "V28": -0.17139698565006256,
+            "Amount": 127.13999938964844,
+            "log_amount": 4.853123188018799,
+            "hour": 20.0
+          }
+        },
+        {
+          "label": "احتيال مؤكد — حالة حدّية",
+          "actual": 1,
+          "features": {
+            "V1": -2.064239740371704,
+            "V2": 2.629739284515381,
+            "V3": -0.7484062314033508,
+            "V4": 0.6949920654296875,
+            "V5": 0.418177992105484,
+            "V6": 1.3925197124481201,
+            "V7": -1.6978012323379517,
+            "V8": -6.333064556121826,
+            "V9": 1.724184274673462,
+            "V10": -0.8872416615486145,
+            "V11": -1.5942578315734863,
+            "V12": -0.3387751281261444,
+            "V13": -0.9780645370483398,
+            "V14": -3.688826084136963,
+            "V15": -1.4870834350585938,
+            "V16": 0.5269460082054138,
+            "V17": 2.3470230102539062,
+            "V18": 1.6912200450897217,
+            "V19": -0.7361106872558594,
+            "V20": -1.4244861602783203,
+            "V21": 6.215514183044434,
+            "V22": -1.2769086360931396,
+            "V23": 0.4598611295223236,
+            "V24": -1.0516854524612427,
+            "V25": 0.2091783583164215,
+            "V26": -0.31985944509506226,
+            "V27": 0.015433868393301964,
+            "V28": -0.05011650174856186,
+            "Amount": 8.0,
+            "log_amount": 2.1972246170043945,
+            "hour": 16.0
+          }
+        },
+        {
+          "label": "احتيال فائت (لم يُكتشف)",
+          "actual": 1,
+          "features": {
+            "V1": 0.05107548460364342,
+            "V2": 1.3104264736175537,
+            "V3": 0.7332220673561096,
+            "V4": 2.620281934738159,
+            "V5": 1.402357578277588,
+            "V6": 0.5284885764122009,
+            "V7": 1.0860143899917603,
+            "V8": -0.14642271399497986,
+            "V9": -1.7243329286575317,
+            "V10": 1.280166745185852,
+            "V11": 0.4708647131919861,
+            "V12": 0.43554195761680603,
+            "V13": 0.5949741005897522,
+            "V14": -0.14209860563278198,
+            "V15": -2.0247344970703125,
+            "V16": 0.8282906413078308,
+            "V17": -1.274787187576294,
+            "V18": 0.13427729904651642,
+            "V19": -1.4894342422485352,
+            "V20": -0.1258769929409027,
+            "V21": 0.2299361377954483,
+            "V22": 0.7669265866279602,
+            "V23": -0.1896236687898636,
+            "V24": 0.7668529748916626,
+            "V25": -0.1414007544517517,
+            "V26": -0.07727795839309692,
+            "V27": -0.29759538173675537,
+            "V28": -0.2218160331249237,
+            "Amount": 2.4700000286102295,
+            "log_amount": 1.2441545724868774,
+            "hour": 18.0
+          }
+        },
+        {
+          "label": "عملية سليمة — خطورة منخفضة",
+          "actual": 0,
+          "features": {
+            "V1": -1.8098336458206177,
+            "V2": 2.066405773162842,
+            "V3": -1.2172420024871826,
+            "V4": -0.6328350305557251,
+            "V5": -0.7541831731796265,
+            "V6": -1.3187649250030518,
+            "V7": -0.1465080827474594,
+            "V8": 1.120935320854187,
+            "V9": 0.24110189080238342,
+            "V10": -0.02225993573665619,
+            "V11": -1.508053183555603,
+            "V12": 0.12412150204181671,
+            "V13": -0.7330965399742126,
+            "V14": 0.998793363571167,
+            "V15": -0.3536700904369354,
+            "V16": 0.26712122559547424,
+            "V17": 0.09372948855161667,
+            "V18": -0.5549991130828857,
+            "V19": -0.15655967593193054,
+            "V20": -0.06494872272014618,
+            "V21": -0.22552035748958588,
+            "V22": -0.765777587890625,
+            "V23": 0.25833243131637573,
+            "V24": -0.06933484971523285,
+            "V25": -0.30129358172416687,
+            "V26": 0.15253353118896484,
+            "V27": 0.05065348371863365,
+            "V28": 0.08320815116167068,
+            "Amount": 9.989999771118164,
+            "log_amount": 2.3969857692718506,
+            "hour": 20.0
+          }
+        },
+        {
+          "label": "عملية سليمة — إنذار كاذب",
+          "actual": 0,
+          "features": {
+            "V1": 2.0961267948150635,
+            "V2": 0.48647540807724,
+            "V3": -2.6831610202789307,
+            "V4": 0.6276032328605652,
+            "V5": 0.7604234218597412,
+            "V6": -1.4450712203979492,
+            "V7": 0.2823232114315033,
+            "V8": -0.30100393295288086,
+            "V9": 0.7324393391609192,
+            "V10": -1.1638715267181396,
+            "V11": -0.6205847859382629,
+            "V12": -1.0806061029434204,
+            "V13": -1.0688486099243164,
+            "V14": -2.3431155681610107,
+            "V15": 1.2490367889404297,
+            "V16": 1.0275485515594482,
+            "V17": 1.5853115320205688,
+            "V18": 1.6391937732696533,
+            "V19": -0.43005988001823425,
+            "V20": -0.20631888508796692,
+            "V21": 0.038591597229242325,
+            "V22": 0.26215410232543945,
+            "V23": -0.11894040554761887,
+            "V24": -0.9011737704277039,
+            "V25": 0.31067803502082825,
+            "V26": -0.05586298182606697,
+            "V27": 0.011575417593121529,
+            "V28": -0.0016756629338487983,
+            "Amount": 1.0,
+            "log_amount": 0.6931471824645996,
+            "hour": 16.0
+          }
+        }
+      ],
+      "runtime_seconds": 105.2
+    },
+    "samld": {
+      "key": "samld",
+      "title_ar": "مراقبة التحويلات لمكافحة غسل الأموال (SAML-D)",
+      "crime_ar": "غسل الأموال",
+      "source": "https://www.kaggle.com/datasets/berkanoztas/synthetic-transaction-monitoring-dataset-aml",
+      "citation": "Oztas, B., Cetinkaya, D., Adedoyin, F., Budka, M., Dogan, H., & Aksu, G. (2023). Enhancing anti-money laundering: Development of a synthetic transaction monitoring dataset. IEEE ICEBE 2023.",
+      "rows": 9504852,
+      "positives": 9873,
+      "prevalence": 0.00104,
+      "features_used": [
+        "Amount",
+        "log_amount",
+        "hour",
+        "weekday",
+        "currency_mismatch",
+        "cross_border",
+        "sender_prior_count",
+        "sender_prior_mean",
+        "amount_to_sender_mean",
+        "sender_secs_since_prev",
+        "sender_distinct_receivers",
+        "receiver_prior_count",
+        "receiver_distinct_senders",
+        "receiver_secs_since_prev",
+        "pair_prior_count",
+        "Payment_type",
+        "Payment_currency",
+        "Received_currency",
+        "Sender_bank_location",
+        "Receiver_bank_location"
+      ],
+      "features_excluded": [],
+      "split": {
+        "train": {
+          "rows": 5702911,
+          "positives": 5742,
+          "prevalence": 0.00101
+        },
+        "validation": {
+          "rows": 1900970,
+          "positives": 1988,
+          "prevalence": 0.00105
+        },
+        "test": {
+          "rows": 1900971,
+          "positives": 2143,
+          "prevalence": 0.00113
+        }
+      },
+      "train_rows_used": 1005742,
+      "validation_runs": [
+        {
+          "name": "Logistic Regression",
+          "group": "algorithm",
+          "pr_auc": 0.0401,
+          "roc_auc": 0.9055,
+          "recall_at_1fpr": 0.2792,
+          "recall_at_01fpr": 0.1006,
+          "fit_seconds": 10.2238
+        },
+        {
+          "name": "Decision Tree",
+          "group": "algorithm",
+          "pr_auc": 0.9173,
+          "roc_auc": 0.9929,
+          "recall_at_1fpr": 0.9826,
+          "recall_at_01fpr": 0.9306,
+          "fit_seconds": 8.191
+        },
+        {
+          "name": "Random Forest",
+          "group": "algorithm",
+          "pr_auc": 0.856,
+          "roc_auc": 0.9993,
+          "recall_at_1fpr": 0.9864,
+          "recall_at_01fpr": 0.9336,
+          "fit_seconds": 19.9827
+        },
+        {
+          "name": "Neural Network (MLP)",
+          "group": "algorithm",
+          "pr_auc": 0.9706,
+          "roc_auc": 0.9997,
+          "recall_at_1fpr": 0.9909,
+          "recall_at_01fpr": 0.9693,
+          "fit_seconds": 24.8145
+        },
+        {
+          "name": "XGBoost",
+          "group": "algorithm",
+          "pr_auc": 0.9774,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9975,
+          "recall_at_01fpr": 0.9764,
+          "fit_seconds": 13.7795
+        },
+        {
+          "name": "LightGBM",
+          "group": "algorithm",
+          "pr_auc": 0.9777,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.997,
+          "recall_at_01fpr": 0.9774,
+          "fit_seconds": 15.4031
+        },
+        {
+          "name": "LightGBM {\"num_leaves\": 15}",
+          "group": "tuning",
+          "pr_auc": 0.9778,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.998,
+          "recall_at_01fpr": 0.9769,
+          "fit_seconds": 11.7909
+        },
+        {
+          "name": "LightGBM {\"num_leaves\": 31}",
+          "group": "tuning",
+          "pr_auc": 0.9777,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.997,
+          "recall_at_01fpr": 0.9774,
+          "fit_seconds": 15.6534
+        },
+        {
+          "name": "LightGBM {\"num_leaves\": 63, \"min_child_samples\": 300}",
+          "group": "tuning",
+          "pr_auc": 0.9777,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.997,
+          "recall_at_01fpr": 0.9754,
+          "fit_seconds": 23.2345
+        },
+        {
+          "name": "XGBoost {\"max_depth\": 4}",
+          "group": "tuning",
+          "pr_auc": 0.9778,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9975,
+          "recall_at_01fpr": 0.9748,
+          "fit_seconds": 12.8574
+        },
+        {
+          "name": "XGBoost {\"max_depth\": 6}",
+          "group": "tuning",
+          "pr_auc": 0.9774,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9975,
+          "recall_at_01fpr": 0.9764,
+          "fit_seconds": 14.8222
+        },
+        {
+          "name": "XGBoost {\"max_depth\": 8, \"min_child_weight\": 10}",
+          "group": "tuning",
+          "pr_auc": 0.977,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9975,
+          "recall_at_01fpr": 0.9769,
+          "fit_seconds": 16.6362
+        },
+        {
+          "name": "LightGBM + class_weight",
+          "group": "imbalance",
+          "pr_auc": 0.9727,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9965,
+          "recall_at_01fpr": 0.9723,
+          "fit_seconds": 12.1207
+        },
+        {
+          "name": "LightGBM + undersample_1:10",
+          "group": "imbalance",
+          "pr_auc": 0.9749,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.997,
+          "recall_at_01fpr": 0.9733,
+          "fit_seconds": 9.8979
+        },
+        {
+          "name": "LightGBM + smote_1:10",
+          "group": "imbalance",
+          "pr_auc": 0.9777,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9975,
+          "recall_at_01fpr": 0.9764,
+          "fit_seconds": 14.1969
+        },
+        {
+          "name": "LightGBM − behavioural features",
+          "group": "ablation",
+          "pr_auc": 0.0772,
+          "roc_auc": 0.7991,
+          "recall_at_1fpr": 0.161,
+          "recall_at_01fpr": 0.0835,
+          "fit_seconds": 9.944
+        }
+      ],
+      "best_configs": {
+        "LightGBM": {
+          "num_leaves": 15
+        },
+        "XGBoost": {
+          "max_depth": 4
+        }
+      },
+      "selected": "LightGBM (tuned)",
+      "imbalance": {
+        "none": 0.9778,
+        "class_weight": 0.9727,
+        "undersample_1:10": 0.9749,
+        "smote_1:10": 0.9777
+      },
+      "ablation": {
+        "main": 0.9778,
+        "without_behavioural": 0.0772
+      },
+      "test_comparison": {
+        "XGBoost": {
+          "pr_auc": 0.9903,
+          "pr_auc_std": 0.0007,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9977,
+          "recall_at_01fpr": 0.9902,
+          "n_seeds": 3
+        },
+        "LightGBM": {
+          "pr_auc": 0.9892,
+          "pr_auc_std": 0.0013,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9973,
+          "recall_at_01fpr": 0.9894,
+          "n_seeds": 3
+        },
+        "Neural Network (MLP)": {
+          "pr_auc": 0.9726,
+          "pr_auc_std": 0.0092,
+          "roc_auc": 0.9993,
+          "recall_at_1fpr": 0.9896,
+          "recall_at_01fpr": 0.9745,
+          "n_seeds": 3
+        },
+        "Decision Tree": {
+          "pr_auc": 0.9346,
+          "pr_auc_std": 0.0,
+          "roc_auc": 0.9917,
+          "recall_at_1fpr": 0.9791,
+          "recall_at_01fpr": 0.9457,
+          "n_seeds": 1
+        },
+        "Random Forest": {
+          "pr_auc": 0.8892,
+          "pr_auc_std": 0.0065,
+          "roc_auc": 0.9997,
+          "recall_at_1fpr": 0.9952,
+          "recall_at_01fpr": 0.9539,
+          "n_seeds": 3
+        },
+        "Logistic Regression": {
+          "pr_auc": 0.0889,
+          "pr_auc_std": 0.0,
+          "roc_auc": 0.908,
+          "recall_at_1fpr": 0.3551,
+          "recall_at_01fpr": 0.1773,
+          "n_seeds": 1
+        }
+      },
+      "test_runs": [
+        {
+          "algorithm": "Logistic Regression",
+          "seed": 42,
+          "pr_auc": 0.0889,
+          "roc_auc": 0.908,
+          "recall_at_1fpr": 0.3551,
+          "recall_at_01fpr": 0.1773
+        },
+        {
+          "algorithm": "Decision Tree",
+          "seed": 42,
+          "pr_auc": 0.9346,
+          "roc_auc": 0.9917,
+          "recall_at_1fpr": 0.9791,
+          "recall_at_01fpr": 0.9457
+        },
+        {
+          "algorithm": "Random Forest",
+          "seed": 42,
+          "pr_auc": 0.8885,
+          "roc_auc": 0.9997,
+          "recall_at_1fpr": 0.9953,
+          "recall_at_01fpr": 0.951
+        },
+        {
+          "algorithm": "Random Forest",
+          "seed": 7,
+          "pr_auc": 0.8831,
+          "roc_auc": 0.9997,
+          "recall_at_1fpr": 0.9949,
+          "recall_at_01fpr": 0.9533
+        },
+        {
+          "algorithm": "Random Forest",
+          "seed": 2026,
+          "pr_auc": 0.896,
+          "roc_auc": 0.9997,
+          "recall_at_1fpr": 0.9953,
+          "recall_at_01fpr": 0.9575
+        },
+        {
+          "algorithm": "Neural Network (MLP)",
+          "seed": 42,
+          "pr_auc": 0.9792,
+          "roc_auc": 0.9997,
+          "recall_at_1fpr": 0.993,
+          "recall_at_01fpr": 0.9781
+        },
+        {
+          "algorithm": "Neural Network (MLP)",
+          "seed": 7,
+          "pr_auc": 0.9621,
+          "roc_auc": 0.9989,
+          "recall_at_1fpr": 0.9851,
+          "recall_at_01fpr": 0.9687
+        },
+        {
+          "algorithm": "Neural Network (MLP)",
+          "seed": 2026,
+          "pr_auc": 0.9765,
+          "roc_auc": 0.9993,
+          "recall_at_1fpr": 0.9907,
+          "recall_at_01fpr": 0.9767
+        },
+        {
+          "algorithm": "XGBoost",
+          "seed": 42,
+          "pr_auc": 0.9895,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9972,
+          "recall_at_01fpr": 0.9897
+        },
+        {
+          "algorithm": "XGBoost",
+          "seed": 7,
+          "pr_auc": 0.9908,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9981,
+          "recall_at_01fpr": 0.9907
+        },
+        {
+          "algorithm": "XGBoost",
+          "seed": 2026,
+          "pr_auc": 0.9905,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9977,
+          "recall_at_01fpr": 0.9902
+        },
+        {
+          "algorithm": "LightGBM",
+          "seed": 42,
+          "pr_auc": 0.9894,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9972,
+          "recall_at_01fpr": 0.9902
+        },
+        {
+          "algorithm": "LightGBM",
+          "seed": 7,
+          "pr_auc": 0.9878,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9967,
+          "recall_at_01fpr": 0.9879
+        },
+        {
+          "algorithm": "LightGBM",
+          "seed": 2026,
+          "pr_auc": 0.9903,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9981,
+          "recall_at_01fpr": 0.9902
+        }
+      ],
+      "final_test": {
+        "pr_auc": 0.9894,
+        "roc_auc": 0.9999,
+        "recall_at_1fpr": 0.9972,
+        "recall_at_01fpr": 0.9902,
+        "brier_calibrated": 0.0,
+        "pr_auc_95ci": [
+          0.9862,
+          0.9929
+        ],
+        "n_bootstrap": 300,
+        "diff_pr_auc_95ci": [
+          -0.0009,
+          0.0011
+        ],
+        "diff_p_value": 0.9733
+      },
+      "runner_up": "XGBoost",
+      "thresholds": {
+        "review": 0.004879655854094522,
+        "block": 0.0912268806771854
+      },
+      "operating_points": {
+        "review_1fpr": {
+          "threshold": 0.0049,
+          "tp": 2137,
+          "fp": 16981,
+          "fn": 6,
+          "tn": 1881847,
+          "recall": 0.9972,
+          "precision": 0.1118,
+          "fpr": 0.0089,
+          "alerts_per_10k": 100.5697
+        },
+        "block_01fpr": {
+          "threshold": 0.0912,
+          "tp": 2121,
+          "fp": 1874,
+          "fn": 22,
+          "tn": 1896954,
+          "recall": 0.9897,
+          "precision": 0.5309,
+          "fpr": 0.001,
+          "alerts_per_10k": 21.0156
+        }
+      },
+      "periods": [
+        {
+          "period": 1,
+          "rows": 475243,
+          "positives": 446,
+          "prevalence": 0.0009,
+          "pr_auc": 0.9827,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 1.0,
+          "recall_at_01fpr": 0.9821,
+          "fpr_at_review": 0.0091,
+          "recall_at_review": 1.0
+        },
+        {
+          "period": 2,
+          "rows": 475243,
+          "positives": 594,
+          "prevalence": 0.0012,
+          "pr_auc": 0.9915,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9983,
+          "recall_at_01fpr": 0.9949,
+          "fpr_at_review": 0.009,
+          "recall_at_review": 0.9983
+        },
+        {
+          "period": 3,
+          "rows": 475243,
+          "positives": 425,
+          "prevalence": 0.0009,
+          "pr_auc": 0.9838,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9953,
+          "recall_at_01fpr": 0.9812,
+          "fpr_at_review": 0.0091,
+          "recall_at_review": 0.9953
+        },
+        {
+          "period": 4,
+          "rows": 475242,
+          "positives": 678,
+          "prevalence": 0.0014,
+          "pr_auc": 0.9948,
+          "roc_auc": 0.9999,
+          "recall_at_1fpr": 0.9971,
+          "recall_at_01fpr": 0.9956,
+          "fpr_at_review": 0.0086,
+          "recall_at_review": 0.9956
+        }
+      ],
+      "drift_psi": [
+        {
+          "feature": "sender_prior_count",
+          "label_ar": "تحويلات سابقة للمرسل",
+          "psi": 1.1982
+        },
+        {
+          "feature": "pair_prior_count",
+          "label_ar": "تحويلات سابقة بين الطرفين",
+          "psi": 0.5022
+        },
+        {
+          "feature": "receiver_prior_count",
+          "label_ar": "تحويلات سابقة للمستلم",
+          "psi": 0.5006
+        },
+        {
+          "feature": "sender_distinct_receivers",
+          "label_ar": "عدد المستلمين المختلفين للمرسل (Fan-out)",
+          "psi": 0.3743
+        },
+        {
+          "feature": "receiver_distinct_senders",
+          "label_ar": "عدد المرسلين المختلفين للمستلم (Fan-in)",
+          "psi": 0.0848
+        },
+        {
+          "feature": "sender_prior_mean",
+          "label_ar": "متوسط مبالغ المرسل السابقة",
+          "psi": 0.0712
+        },
+        {
+          "feature": "receiver_secs_since_prev",
+          "label_ar": "ثوانٍ منذ آخر استلام",
+          "psi": 0.0174
+        },
+        {
+          "feature": "sender_secs_since_prev",
+          "label_ar": "ثوانٍ منذ آخر تحويل للمرسل",
+          "psi": 0.0064
+        },
+        {
+          "feature": "amount_to_sender_mean",
+          "label_ar": "المبلغ ÷ متوسط المرسل",
+          "psi": 0.0024
+        },
+        {
+          "feature": "weekday",
+          "label_ar": "يوم الأسبوع",
+          "psi": 0.002
+        }
+      ],
+      "feature_importance": [
+        {
+          "feature": "pair_prior_count",
+          "label_ar": "تحويلات سابقة بين الطرفين",
+          "mean_abs_shap": 1.02133
+        },
+        {
+          "feature": "sender_distinct_receivers",
+          "label_ar": "عدد المستلمين المختلفين للمرسل (Fan-out)",
+          "mean_abs_shap": 0.90434
+        },
+        {
+          "feature": "receiver_prior_count",
+          "label_ar": "تحويلات سابقة للمستلم",
+          "mean_abs_shap": 0.57956
+        },
+        {
+          "feature": "sender_secs_since_prev",
+          "label_ar": "ثوانٍ منذ آخر تحويل للمرسل",
+          "mean_abs_shap": 0.50605
+        },
+        {
+          "feature": "receiver_distinct_senders",
+          "label_ar": "عدد المرسلين المختلفين للمستلم (Fan-in)",
+          "mean_abs_shap": 0.46473
+        },
+        {
+          "feature": "receiver_secs_since_prev",
+          "label_ar": "ثوانٍ منذ آخر استلام",
+          "mean_abs_shap": 0.41427
+        },
+        {
+          "feature": "sender_prior_count",
+          "label_ar": "تحويلات سابقة للمرسل",
+          "mean_abs_shap": 0.34807
+        },
+        {
+          "feature": "Payment_type_Cash Withdrawal",
+          "label_ar": "نوع الدفع = Cash Withdrawal",
+          "mean_abs_shap": 0.21141
+        },
+        {
+          "feature": "Payment_type_Cash Deposit",
+          "label_ar": "نوع الدفع = Cash Deposit",
+          "mean_abs_shap": 0.20115
+        },
+        {
+          "feature": "hour",
+          "label_ar": "ساعة التحويل",
+          "mean_abs_shap": 0.19867
+        },
+        {
+          "feature": "sender_prior_mean",
+          "label_ar": "متوسط مبالغ المرسل السابقة",
+          "mean_abs_shap": 0.179
+        },
+        {
+          "feature": "amount_to_sender_mean",
+          "label_ar": "المبلغ ÷ متوسط المرسل",
+          "mean_abs_shap": 0.17079
+        },
+        {
+          "feature": "Amount",
+          "label_ar": "المبلغ",
+          "mean_abs_shap": 0.12724
+        },
+        {
+          "feature": "weekday",
+          "label_ar": "يوم الأسبوع",
+          "mean_abs_shap": 0.05258
+        },
+        {
+          "feature": "Payment_type_ACH",
+          "label_ar": "نوع الدفع = ACH",
+          "mean_abs_shap": 0.03934
+        },
+        {
+          "feature": "log_amount",
+          "label_ar": "لوغاريتم المبلغ",
+          "mean_abs_shap": 0.03446
+        },
+        {
+          "feature": "currency_mismatch",
+          "label_ar": "اختلاف عملة الدفع والاستلام",
+          "mean_abs_shap": 0.02799
+        },
+        {
+          "feature": "Payment_type_Credit card",
+          "label_ar": "نوع الدفع = Credit card",
+          "mean_abs_shap": 0.01688
+        },
+        {
+          "feature": "Received_currency_UK pounds",
+          "label_ar": "عملة الاستلام = UK pounds",
+          "mean_abs_shap": 0.01521
+        },
+        {
+          "feature": "Payment_currency_UK pounds",
+          "label_ar": "عملة الدفع = UK pounds",
+          "mean_abs_shap": 0.01506
+        }
+      ],
+      "latency": {
+        "single_ms_median": 1.45,
+        "throughput_per_second": 215490
+      },
+      "schema": [
+        {
+          "name": "Amount",
+          "label_ar": "المبلغ",
+          "type": "number",
+          "default": 6116.93994140625,
+          "min": 3.7300000190734863,
+          "max": 11837365.0
+        },
+        {
+          "name": "log_amount",
+          "label_ar": "لوغاريتم المبلغ",
+          "type": "number",
+          "default": 8.71898078918457,
+          "min": 1.5539251565933228,
+          "max": 16.286771774291992
+        },
+        {
+          "name": "hour",
+          "label_ar": "ساعة التحويل",
+          "type": "number",
+          "default": 14.0,
+          "min": 0.0,
+          "max": 23.0
+        },
+        {
+          "name": "weekday",
+          "label_ar": "يوم الأسبوع",
+          "type": "number",
+          "default": 3.0,
+          "min": 0.0,
+          "max": 6.0
+        },
+        {
+          "name": "currency_mismatch",
+          "label_ar": "اختلاف عملة الدفع والاستلام",
+          "type": "binary",
+          "default": 0.0,
+          "min": 0.0,
+          "max": 1.0
+        },
+        {
+          "name": "cross_border",
+          "label_ar": "تحويل عابر للحدود",
+          "type": "binary",
+          "default": 0.0,
+          "min": 0.0,
+          "max": 1.0
+        },
+        {
+          "name": "sender_prior_count",
+          "label_ar": "تحويلات سابقة للمرسل",
+          "type": "number",
+          "default": 64.0,
+          "min": 0.0,
+          "max": 542.0
+        },
+        {
+          "name": "sender_prior_mean",
+          "label_ar": "متوسط مبالغ المرسل السابقة",
+          "type": "number",
+          "default": 7705.521484375,
+          "min": 9.109999656677246,
+          "max": 9939368.0
+        },
+        {
+          "name": "amount_to_sender_mean",
+          "label_ar": "المبلغ ÷ متوسط المرسل",
+          "type": "number",
+          "default": 0.9589838981628418,
+          "min": 1.2212700312375091e-05,
+          "max": 18742.986328125
+        },
+        {
+          "name": "sender_secs_since_prev",
+          "label_ar": "ثوانٍ منذ آخر تحويل للمرسل",
+          "type": "number",
+          "default": 10134.0,
+          "min": 0.0,
+          "max": 16340211.0
+        },
+        {
+          "name": "sender_distinct_receivers",
+          "label_ar": "عدد المستلمين المختلفين للمرسل (Fan-out)",
+          "type": "number",
+          "default": 17.0,
+          "min": 0.0,
+          "max": 58.0
+        },
+        {
+          "name": "receiver_prior_count",
+          "label_ar": "تحويلات سابقة للمستلم",
+          "type": "number",
+          "default": 6.0,
+          "min": 0.0,
+          "max": 463.0
+        },
+        {
+          "name": "receiver_distinct_senders",
+          "label_ar": "عدد المرسلين المختلفين للمستلم (Fan-in)",
+          "type": "number",
+          "default": 1.0,
+          "min": 0.0,
+          "max": 36.0
+        },
+        {
+          "name": "receiver_secs_since_prev",
+          "label_ar": "ثوانٍ منذ آخر استلام",
+          "type": "number",
+          "default": 12327.0,
+          "min": 0.0,
+          "max": 16420063.0
+        },
+        {
+          "name": "pair_prior_count",
+          "label_ar": "تحويلات سابقة بين الطرفين",
+          "type": "number",
+          "default": 4.0,
+          "min": 0.0,
+          "max": 52.0
+        },
+        {
+          "name": "Payment_type",
+          "label_ar": "نوع الدفع",
+          "type": "category",
+          "options": [
+            "ACH",
+            "Cash Deposit",
+            "Cash Withdrawal",
+            "Cheque",
+            "Credit card",
+            "Cross-border",
+            "Debit card"
+          ],
+          "default": "Credit card"
+        },
+        {
+          "name": "Payment_currency",
+          "label_ar": "عملة الدفع",
+          "type": "category",
+          "options": [
+            "Albanian lek",
+            "Dirham",
+            "Euro",
+            "Indian rupee",
+            "Mexican Peso",
+            "Moroccan dirham",
+            "Naira",
+            "Pakistani rupee",
+            "Swiss franc",
+            "Turkish lira",
+            "UK pounds",
+            "US dollar",
+            "Yen"
+          ],
+          "default": "UK pounds"
+        },
+        {
+          "name": "Received_currency",
+          "label_ar": "عملة الاستلام",
+          "type": "category",
+          "options": [
+            "Albanian lek",
+            "Dirham",
+            "Euro",
+            "Indian rupee",
+            "Mexican Peso",
+            "Moroccan dirham",
+            "Naira",
+            "Pakistani rupee",
+            "Swiss franc",
+            "Turkish lira",
+            "UK pounds",
+            "US dollar",
+            "Yen"
+          ],
+          "default": "UK pounds"
+        },
+        {
+          "name": "Sender_bank_location",
+          "label_ar": "دولة بنك المرسل",
+          "type": "category",
+          "options": [
+            "Albania",
+            "Austria",
+            "France",
+            "Germany",
+            "India",
+            "Italy",
+            "Japan",
+            "Mexico",
+            "Morocco",
+            "Netherlands",
+            "Nigeria",
+            "Pakistan",
+            "Spain",
+            "Switzerland",
+            "Turkey",
+            "UAE",
+            "UK",
+            "USA"
+          ],
+          "default": "UK"
+        },
+        {
+          "name": "Receiver_bank_location",
+          "label_ar": "دولة بنك المستلم",
+          "type": "category",
+          "options": [
+            "Albania",
+            "Austria",
+            "France",
+            "Germany",
+            "India",
+            "Italy",
+            "Japan",
+            "Mexico",
+            "Morocco",
+            "Netherlands",
+            "Nigeria",
+            "Pakistan",
+            "Spain",
+            "Switzerland",
+            "Turkey",
+            "UAE",
+            "UK",
+            "USA"
+          ],
+          "default": "UK"
+        }
+      ],
+      "samples": [
+        {
+          "label": "احتيال مؤكد — خطورة عالية",
+          "actual": 1,
+          "features": {
+            "Amount": 15652.7099609375,
+            "log_amount": 9.658463478088379,
+            "hour": 18.0,
+            "weekday": 6.0,
+            "currency_mismatch": 0.0,
+            "cross_border": 0.0,
+            "sender_prior_count": 128.0,
+            "sender_prior_mean": 9583.1533203125,
+            "amount_to_sender_mean": 1.6333569288253784,
+            "sender_secs_since_prev": 913198.0,
+            "sender_distinct_receivers": 12.0,
+            "receiver_prior_count": 9.0,
+            "receiver_distinct_senders": 4.0,
+            "receiver_secs_since_prev": 212776.0,
+            "pair_prior_count": 0.0,
+            "Payment_type": "Cash Deposit",
+            "Payment_currency": "UK pounds",
+            "Received_currency": "UK pounds",
+            "Sender_bank_location": "UK",
+            "Receiver_bank_location": "UK"
+          }
+        },
+        {
+          "label": "احتيال مؤكد — حالة حدّية",
+          "actual": 1,
+          "features": {
+            "Amount": 2357.77001953125,
+            "log_amount": 7.765895366668701,
+            "hour": 11.0,
+            "weekday": 1.0,
+            "currency_mismatch": 0.0,
+            "cross_border": 0.0,
+            "sender_prior_count": 592.0,
+            "sender_prior_mean": 7685.35205078125,
+            "amount_to_sender_mean": 0.30678752064704895,
+            "sender_secs_since_prev": 36107.0,
+            "sender_distinct_receivers": 23.0,
+            "receiver_prior_count": 0.0,
+            "receiver_distinct_senders": 0.0,
+            "receiver_secs_since_prev": null,
+            "pair_prior_count": 0.0,
+            "Payment_type": "Cheque",
+            "Payment_currency": "UK pounds",
+            "Received_currency": "UK pounds",
+            "Sender_bank_location": "UK",
+            "Receiver_bank_location": "UK"
+          }
+        },
+        {
+          "label": "احتيال فائت (لم يُكتشف)",
+          "actual": 1,
+          "features": {
+            "Amount": 14717.7001953125,
+            "log_amount": 9.596874237060547,
+            "hour": 21.0,
+            "weekday": 0.0,
+            "currency_mismatch": 1.0,
+            "cross_border": 1.0,
+            "sender_prior_count": 310.0,
+            "sender_prior_mean": 7675.25390625,
+            "amount_to_sender_mean": 1.9175522327423096,
+            "sender_secs_since_prev": 75231.0,
+            "sender_distinct_receivers": 35.0,
+            "receiver_prior_count": 0.0,
+            "receiver_distinct_senders": 0.0,
+            "receiver_secs_since_prev": null,
+            "pair_prior_count": 0.0,
+            "Payment_type": "Cross-border",
+            "Payment_currency": "UK pounds",
+            "Received_currency": "Pakistani rupee",
+            "Sender_bank_location": "UK",
+            "Receiver_bank_location": "Pakistan"
+          }
+        },
+        {
+          "label": "عملية سليمة — خطورة منخفضة",
+          "actual": 0,
+          "features": {
+            "Amount": 8660.7998046875,
+            "log_amount": 9.066678047180176,
+            "hour": 4.0,
+            "weekday": 2.0,
+            "currency_mismatch": 1.0,
+            "cross_border": 1.0,
+            "sender_prior_count": 276.0,
+            "sender_prior_mean": 10430.27734375,
+            "amount_to_sender_mean": 0.8303518295288086,
+            "sender_secs_since_prev": 298.0,
+            "sender_distinct_receivers": 40.0,
+            "receiver_prior_count": 3.0,
+            "receiver_distinct_senders": 1.0,
+            "receiver_secs_since_prev": 3210.0,
+            "pair_prior_count": 3.0,
+            "Payment_type": "Cross-border",
+            "Payment_currency": "UK pounds",
+            "Received_currency": "Swiss franc",
+            "Sender_bank_location": "UK",
+            "Receiver_bank_location": "France"
+          }
+        },
+        {
+          "label": "عملية سليمة — إنذار كاذب",
+          "actual": 0,
+          "features": {
+            "Amount": 33467.421875,
+            "log_amount": 10.418357849121094,
+            "hour": 22.0,
+            "weekday": 0.0,
+            "currency_mismatch": 0.0,
+            "cross_border": 0.0,
+            "sender_prior_count": 262.0,
+            "sender_prior_mean": 8796.4951171875,
+            "amount_to_sender_mean": 3.804631233215332,
+            "sender_secs_since_prev": 455411.0,
+            "sender_distinct_receivers": 26.0,
+            "receiver_prior_count": 0.0,
+            "receiver_distinct_senders": 0.0,
+            "receiver_secs_since_prev": null,
+            "pair_prior_count": 0.0,
+            "Payment_type": "Cheque",
+            "Payment_currency": "UK pounds",
+            "Received_currency": "UK pounds",
+            "Sender_bank_location": "UK",
+            "Receiver_bank_location": "UK"
+          }
+        }
+      ],
+      "runtime_seconds": 629.8
+    }
+  },
+  "cross_dataset": {
+    "blocks": 9,
+    "friedman_chi2": 23.746,
+    "friedman_p": 0.000243,
+    "average_ranks": {
+      "LightGBM": 2.22,
+      "XGBoost": 2.33,
+      "Random Forest": 3.11,
+      "Neural Network (MLP)": 3.11,
+      "Decision Tree": 4.67,
+      "Logistic Regression": 5.56
+    },
+    "nemenyi_cd": 2.51
+  },
+  "version": "3.0.0",
+  "trained_at": "2026-11-06T00:04:14.780312+00:00",
+  "quick_run": false,
+  "protocol": {
+    "split": "temporal 60/20/20 on event time",
+    "negatives_cap": 1000000,
+    "seeds": [
+      42,
+      7,
+      2026
+    ],
+    "primary_metric": "PR-AUC",
+    "review_threshold": "1% FPR on validation",
+    "block_threshold": "0.1% FPR on validation",
+    "calibration": "isotonic on validation"
+  },
+  "environment": {
+    "python": "3.14.6",
+    "sklearn": "1.9.1",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.4.1"
+  }
+}

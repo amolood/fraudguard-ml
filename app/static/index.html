@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071323"><meta name="description" content="FraudGuard — كشف الاحتيال وغسل الأموال في العمليات البنكية بتعلم الآلة">
+<title>فرودغارد | كشف الجرائم المالية الإلكترونية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/styles.css">
+<script defer src="/static/app.js"></script>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="brand-symbol"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 20 6v6c0 5-3.4 8.1-8 10-4.6-1.9-8-5-8-10V6l8-4Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg></div><div><strong>فرودغارد <span>ML</span></strong><small>FINANCIAL CRIME AI</small></div></div>
+  <div class="nav-caption">مساحة العمل</div>
+  <nav aria-label="التنقل الرئيسي">
+    <button class="nav-link active" data-view="dashboard"><span class="nav-icon">▦</span> لوحة المعلومات</button>
+    <button class="nav-link" data-view="screen"><span class="nav-icon">◇</span> فحص عملية <span class="nav-badge">AI</span></button>
+    <button class="nav-link" data-view="batch"><span class="nav-icon">▤</span> فحص دفعة (CSV)</button>
+    <button class="nav-link" data-view="history"><span class="nav-icon">◷</span> سجل الفحوصات</button>
+  </nav>
+  <div class="nav-caption nav-caption-second">النماذج والبحث</div>
+  <nav><button class="nav-link" data-view="models"><span class="nav-icon">▥</span> التقييم والتجارب</button><button class="nav-link" data-view="about"><span class="nav-icon">ⓘ</span> عن النظام</button></nav>
+  <div class="sidebar-bottom"><div class="status-line"><span class="status-dot"></span> <span id="sideModelStatus">جاري فحص النماذج</span></div><p>نسخة بحثية محلية<br>FraudGuard ML v4.0</p></div>
+</aside>
+<div class="content-shell">
+<header class="topbar"><div class="topbar-start"><button class="mobile-menu" id="menuToggle" aria-label="فتح القائمة">☰</button><span class="breadcrumb">مركز مكافحة الجرائم المالية</span><span class="slash">/</span><span class="crumb-current" id="breadcrumb">نظرة عامة</span></div><div class="topbar-end"><label class="ds-picker">مجموعة البيانات <select id="datasetSelect" aria-label="اختيار مجموعة البيانات"></select></label><span class="clock" id="clock"></span><div class="avatar">FG</div></div></header>
+<main class="main">
+
+<section class="view current" id="view-dashboard">
+  <div class="page-title"><div><div class="eyebrow">FINANCIAL CRIME OPERATIONS</div><h1>لوحة المعلومات</h1><p>كشف الاحتيال وغسل الأموال في العمليات البنكية باستخدام تعلم الآلة، على ثلاث مجموعات بيانات عامة.</p></div><button class="btn btn-primary" data-go="screen">+ فحص عملية</button></div>
+  <div class="ds-cards" id="dsCards"></div>
+  <div class="two-col">
+    <div class="panel"><div class="panel-head"><div><h3>ترتيب الخوارزميات عبر المجموعات الثلاث</h3><p>متوسط الرتبة حسب PR-AUC (1 = الأفضل) · اختبار فريدمان</p></div><span class="subtle-badge" id="friedmanBadge">—</span></div><div id="rankRows" class="progress-list"></div></div>
+    <div class="panel"><div class="panel-head"><div><h3>الفحوصات المحفوظة</h3><p>سجل محلي على هذا الجهاز</p></div></div><div class="stats-grid mini" id="screenStats"></div></div>
+  </div>
+  <div class="notice"><span class="notice-icon">ⓘ</span><div><strong>تنبيه منهجي</strong><p>النظام يقدّر <b>مستوى الخطورة</b> لكل عملية ويوجهها إلى قبول أو مراجعة أو حظر. النتيجة أداة دعم للمحلل، وليست دليلاً على جريمة. مجموعتا PaySim وSAML-D بيانات محاكاة، وULB معاملات حقيقية مخفية الهوية.</p></div></div>
+</section>
+
+<section class="view" id="view-screen">
+  <div class="page-title"><div><div class="eyebrow">TRANSACTION SCREENING</div><h1>فحص عملية</h1><p id="screenSubtitle">اختر مثالاً من بيانات الاختبار أو أدخل القيم، ثم شغّل الفحص.</p></div><span class="subtle-badge english" id="screenModel">—</span></div>
+  <div class="analysis-layout">
+    <div class="panel classify-panel">
+      <div class="panel-head"><div><h3>بيانات العملية</h3><p>الحقول الفارغة تُملأ بالوسيط من بيانات التدريب</p></div><span class="icon-circle">◇</span></div>
+      <div class="sample-block"><span>أمثلة من الاختبار:</span><span id="sampleButtons"></span></div>
+      <div class="form-grid" id="formGrid"></div>
+      <button class="btn btn-primary btn-full" id="scoreBtn">◇ تشغيل الفحص</button>
+      <div class="form-error" id="formError" role="alert"></div>
+    </div>
+    <div class="panel result-panel">
+      <div class="panel-head"><div><h3>نتيجة الفحص</h3><p>القرار ومبرراته</p></div><span class="subtle-badge" id="resultStatus">بانتظار الفحص</span></div>
+      <div class="result-empty" id="resultEmpty"><div class="empty-graphic">◇</div><h4>لا توجد نتيجة بعد</h4><p>اختر مثالاً أو أدخل البيانات ثم اضغط «تشغيل الفحص».</p></div>
+      <div class="result-content hidden" id="resultContent">
+        <div class="decision-card" id="decisionCard"><div class="decision-label" id="decisionLabel"></div><div class="decision-prob"><span>الاحتمال المعاير</span><strong id="probValue"></strong></div><div class="risk-meter"><div id="riskFill"></div><span class="tick" id="tickReview" title="حد المراجعة"></span><span class="tick block" id="tickBlock" title="حد الحظر"></span></div><div class="risk-legend"><span>قبول</span><span>مراجعة</span><span>حظر</span></div></div>
+        <div class="result-divider"></div>
+        <h4>لماذا هذا القرار؟ <small class="muted">(مساهمات SHAP)</small></h4>
+        <div id="reasons"></div>
+        <div class="result-advice"><strong>كيفية القراءة</strong><p>الأشرطة الحمراء ترفع الخطورة والخضراء تخفضها. الحدود مثبتة على بيانات التحقق: <b>مراجعة</b> عند 1% إنذار كاذب، و<b>حظر</b> عند 0.1%.</p></div>
+        <div class="result-meta" id="resultMeta"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="view-batch">
+  <div class="page-title"><div><div class="eyebrow">BATCH SCREENING</div><h1>فحص دفعة عمليات</h1><p>ارفع ملف CSV بالأعمدة الأصلية لمجموعة البيانات المختارة (حتى 500 ألف صف). يحسب النظام خصائص سلوك الحسابات من الملف نفسه، وإن وُجد عمود التصنيف يُقيَّم الأداء مباشرة.</p></div></div>
+  <div class="panel"><p class="body-p">الأعمدة المطلوبة: <code class="english" id="batchColumns">—</code></p><div class="upload-row"><input type="file" id="batchFile" accept=".csv,text/csv"><button class="btn btn-primary" id="batchBtn">تشغيل فحص الدفعة</button></div><div class="form-error" id="batchError"></div>
+    <div id="batchResult" class="hidden"><div class="stats-grid batch-stats" id="batchStats"></div><div id="batchEval"></div><h4>أعلى 50 عملية خطورة</h4><div class="table-scroller"><table class="data-table"><thead><tr><th>رقم الصف</th><th>الاحتمال</th><th>القرار</th><th>الفعلي</th></tr></thead><tbody id="batchRows"></tbody></table></div></div>
+  </div>
+</section>
+
+<section class="view" id="view-history">
+  <div class="page-title"><div><div class="eyebrow">SCREENING ARCHIVE</div><h1>سجل الفحوصات</h1><p>نتائج الفحص الفردي محفوظة محلياً في SQLite.</p></div><button class="btn btn-danger-outline" id="clearHistory">حذف السجل</button></div>
+  <div class="panel"><div class="table-scroller"><table class="data-table"><thead><tr><th>التاريخ</th><th>المجموعة</th><th>القرار</th><th>الاحتمال</th><th>أهم الأسباب</th></tr></thead><tbody id="historyRows"><tr><td colspan="5">—</td></tr></tbody></table></div><div class="table-footer"><span id="historyCount">—</span><span>لا تنتقل البيانات لأي خدمة خارجية</span></div></div>
+</section>
+
+<section class="view" id="view-models">
+  <div class="page-title"><div><div class="eyebrow">EXPERIMENTAL EVALUATION</div><h1>التقييم والتجارب</h1><p id="modelsSubtitle">تقسيم زمني 60/20/20 · اختيار على التحقق · اختبار مرة واحدة · 3 بذور عشوائية.</p></div><span class="subtle-badge english" id="selectedBadge">—</span></div>
+  <div class="panel"><div class="panel-head"><div><h3>مقارنة الخوارزميات على الاختبار</h3><p>المقياس الأساسي PR-AUC (متوسط ± انحراف معياري عبر البذور)</p></div><span class="subtle-badge" id="significance">—</span></div><div class="table-scroller"><table class="data-table metrics-table"><thead><tr><th>الخوارزمية</th><th>PR-AUC</th><th>ROC-AUC</th><th>Recall @1% FPR</th><th>Recall @0.1% FPR</th></tr></thead><tbody id="metricsRows"></tbody></table></div></div>
+  <div class="panel"><div class="panel-head"><div><h3>نقاط التشغيل على الاختبار</h3><p>الحدود مثبتة مسبقاً على بيانات التحقق</p></div></div><div class="table-scroller"><table class="data-table metrics-table"><thead><tr><th>المستوى</th><th>Recall</th><th>Precision</th><th>FPR</th><th>مكتشف</th><th>إنذار كاذب</th><th>فائت</th><th>تنبيهات / 10 آلاف</th></tr></thead><tbody id="opRows"></tbody></table></div></div>
+  <div class="two-col">
+    <div class="panel"><div class="panel-head"><div><h3>عدم التوازن والاستئصال</h3><p>PR-AUC على التحقق</p></div></div><div id="experimentRows" class="progress-list"></div></div>
+    <div class="panel"><div class="panel-head"><div><h3>الثبات الزمني</h3><p>الاختبار مقسوم إلى أربع فترات متتالية</p></div></div><div class="table-scroller"><table class="data-table"><thead><tr><th>الفترة</th><th>نسبة الجريمة</th><th>PR-AUC</th><th>FPR عند حد المراجعة</th></tr></thead><tbody id="periodRows"></tbody></table></div><p class="body-p" id="driftText"></p></div>
+  </div>
+  <div class="panel"><div class="panel-head"><div><h3>الأشكال البيانية</h3><p>مولّدة تلقائياً في reports/ — انقر للتكبير</p></div></div><div class="figure-grid" id="figures"></div></div>
+</section>
+
+<section class="view" id="view-about">
+  <div class="page-title"><div><div class="eyebrow">PROJECT DOCUMENTATION</div><h1>عن النظام</h1><p>استخدام خوارزميات تعلم الآلة في الكشف عن الجرائم الإلكترونية في العمليات البنكية.</p></div></div>
+  <div class="panel"><div class="table-scroller"><table class="data-table"><thead><tr><th>المجموعة</th><th>نوع الجريمة</th><th>العمليات</th><th>نسبة الجريمة</th><th>المصدر</th></tr></thead><tbody id="aboutRows"></tbody></table></div></div>
+  <div class="two-col"><div class="panel"><h3>ماذا يفعل فرودغارد؟</h3><p class="body-p">يقدّر احتمال أن تكون العملية البنكية احتيالية أو جزءاً من غسل أموال، ويوجهها إلى قبول أو مراجعة يدوية أو حظر، مع تفسير لأسباب القرار. يدعم فحص عملية واحدة أو ملف كامل.</p><div class="about-pills"><span>FastAPI</span><span>LightGBM</span><span>XGBoost</span><span>Scikit-learn</span><span>SHAP</span><span>SQLite</span></div></div>
+  <div class="panel"><h3>حدود النظام</h3><p class="body-p">مجموعتا PaySim وSAML-D بيانات محاكاة، فالأداء في بنك حقيقي سيختلف. خصائص ULB مخفية بتحويل PCA فلا تُفسَّر بأسماء حقيقية. لا توجد مصادقة، فيُشغَّل النظام محلياً فقط.</p></div></div>
+</section>
+
+</main></div></div>
+<div class="toast hidden" id="toast" role="status"></div>
+<div class="modal-overlay hidden" id="figOverlay"><img id="figImg" alt="" class="fig-full"></div>
+</body></html>
